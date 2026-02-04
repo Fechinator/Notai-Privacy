@@ -183,11 +183,12 @@
             <section>
                 <h2>2. Controller (Art. 4 No. 7 GDPR)</h2>
                 <p>
-                    <strong>Christoph Andreas Fechter</strong><br>
+                    <strong>FechTech</strong><br>
+                    Christoph Andreas Fechter<br>
                     Geheimrat-Frank-Straße 1<br>
                     94566 Riedlhütte<br>
                     Germany<br>
-                    E-Mail: <a href="mailto:fechter73@googlemail.com">fechter73@googlemail.com</a>
+                    E-Mail: <a href="mailto:fechtech.dev@gmail.com">fechtech.dev@gmail.com</a>
                 </p>
             </section>
 
@@ -197,40 +198,55 @@
                     Below we explain which permissions are required and for what purpose they are used.</p>
 
                 <h3>3.1. Microphone (Audio Recording)</h3>
-                <p><strong>Permissions:</strong><br>
-                    <code>android.permission.RECORD_AUDIO</code><br>
-                    <code>android.permission.FOREGROUND_SERVICE_MICROPHONE</code>
+                <p><strong>System Permission:</strong><br>
+                    <code>NSMicrophoneUsageDescription</code>
                 </p>
                 <p><strong>Purpose:</strong><br>
-                    The app allows you to record voice notes. These audio recordings are processed via the Android
-                    System Speech Recognition, which may use local or cloud processing depending on your device
-                    settings. The resulting transcribed text is used to create summaries or answer questions (see
+                    The app allows you to record voice notes. These audio recordings are processed via Apple's Speech
+                    Recognition framework, which may use local or cloud processing depending on your device capabilities
+                    and iOS version. The resulting transcribed text is used to create summaries or answer questions (see
                     Section 4.1 "Google Gemini / Firebase Vertex AI").</p>
                 <p><strong>Legal Basis:</strong><br>
                     Art. 6 (1) lit. b GDPR (Performance of a contract) and Art. 6 (1) lit. a GDPR (Consent)</p>
 
-                <h3>3.2. Calendar</h3>
-                <p><strong>Permissions:</strong><br>
-                    <code>android.permission.READ_CALENDAR</code><br>
-                    <code>android.permission.WRITE_CALENDAR</code>
+                <h3>3.2. Speech Recognition</h3>
+                <p><strong>System Permission:</strong><br>
+                    <code>NSSpeechRecognitionUsageDescription</code>
                 </p>
                 <p><strong>Purpose:</strong><br>
-                    The app can, upon request, read appointments from your calendar to link them with your notes, or
-                    create new appointments based on your notes. This function is optional and can be deactivated by you
-                    at any time in the device settings. The calendar data is processed exclusively locally on your
-                    device and is not passed on to our servers or third parties.</p>
+                    The app uses Apple's Speech Recognition to convert your voice recordings into text. Depending on
+                    your device and iOS version, speech recognition may be processed on-device or via Apple's servers.
+                </p>
                 <p><strong>Legal Basis:</strong><br>
                     Art. 6 (1) lit. a GDPR (Consent)</p>
 
-                <h3>3.3. Notifications and Alarms</h3>
-                <p><strong>Permissions:</strong><br>
-                    <code>android.permission.POST_NOTIFICATIONS</code><br>
-                    <code>android.permission.RECEIVE_BOOT_COMPLETED</code>
+                <h3>3.3. Calendar</h3>
+                <p><strong>System Permission:</strong><br>
+                    <code>NSCalendarsWriteOnlyAccessUsageDescription</code>
                 </p>
                 <p><strong>Purpose:</strong><br>
-                    The app sends you reminders for your notes or appointments. The "Boot Completed" permission is used
-                    to restore scheduled reminders after a device restart. This functionality takes place exclusively
-                    locally on your device.</p>
+                    The app can, upon request, create new calendar events based on your notes to schedule appointments
+                    and reminders. This function is optional and can be deactivated by you at any time in the iOS
+                    Settings. The calendar data is processed exclusively locally on your device and is not passed on to
+                    our servers or third parties.</p>
+                <p><strong>Note:</strong> The app requests write-only access to your calendar, meaning it can create
+                    events but cannot read your existing calendar data.</p>
+                <p><strong>Legal Basis:</strong><br>
+                    Art. 6 (1) lit. a GDPR (Consent)</p>
+
+                <h3>3.4. Notifications</h3>
+                <p><strong>Purpose:</strong><br>
+                    The app sends you reminders for your notes or appointments. iOS manages notification scheduling
+                    through the system's notification service. This functionality is processed by the iOS operating
+                    system.</p>
+                <p><strong>Legal Basis:</strong><br>
+                    Art. 6 (1) lit. b GDPR (Performance of a contract)</p>
+
+                <h3>3.5. Background Processing</h3>
+                <p><strong>Purpose:</strong><br>
+                    The app uses iOS Background Modes (fetch and processing) to prepare morning briefings and ensure
+                    timely delivery of scheduled reminders. These tasks run according to iOS system scheduling and
+                    consume minimal resources.</p>
                 <p><strong>Legal Basis:</strong><br>
                     Art. 6 (1) lit. b GDPR (Performance of a contract)</p>
             </section>
@@ -242,8 +258,8 @@
 
                 <h3>4.1. Google Gemini / Firebase Vertex AI (Artificial Intelligence)</h3>
                 <p><strong>Purpose:</strong><br>
-                    We use AI models from Google (Gemini/Vertex AI) to create AI-supported summaries of your notes and
-                    to provide interactive assistance (answering questions based on your notes).</p>
+                    We use AI models from Google (Gemini via Firebase Vertex AI) to create AI-supported summaries of
+                    your notes and to provide interactive assistance (answering questions based on your notes).</p>
                 <p><strong>Processed Data:</strong><br>
                     Only the text inputs created by you or the locally transcribed text of your voice notes are sent to
                     Google servers for processing. Audio files are not transferred.</p>
@@ -267,10 +283,10 @@
                 <ul>
                     <li>Purchase history and subscription status</li>
                     <li>Anonymized user IDs (for assignment of purchases)</li>
-                    <li>Device IDs</li>
+                    <li>Device identifiers</li>
                 </ul>
-                <p>Payment information (such as credit card numbers) is processed exclusively by the Google Play Store
-                    and is neither stored nor viewed by us or RevenueCat.</p>
+                <p>Payment information (such as credit card numbers) is processed exclusively by Apple through the App
+                    Store and is neither stored nor viewed by us or RevenueCat.</p>
                 <p><strong>Data Transfer to Third Countries:</strong><br>
                     RevenueCat is based in the USA. Data transfer is based on Standard Contractual Clauses in accordance
                     with Art. 46 (2) lit. c GDPR.</p>
@@ -280,56 +296,47 @@
                     <a href="https://www.revenuecat.com/privacy/" target="_blank">RevenueCat Privacy Policy</a>
                 </p>
 
-                <h3>4.3. Firebase Crashlytics & Analytics (Google LLC)</h3>
+                <h3>4.3. Apple App Store</h3>
                 <p><strong>Purpose:</strong><br>
-                    To improve app stability and performance, we use Firebase Crashlytics and Firebase Analytics,
-                    services of Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
+                    In-app purchases and subscriptions are processed through Apple's App Store. Apple handles all
+                    payment processing and subscription management.</p>
                 <p><strong>Processed Data:</strong></p>
                 <ul>
-                    <li>Crash logs and technical error reports</li>
-                    <li>Device type, operating system, and version</li>
-                    <li>Anonymized usage data (e.g., frequency of app usage, used functions)</li>
-                    <li>Device IDs and App Instance IDs</li>
+                    <li>Purchase transactions</li>
+                    <li>Subscription status</li>
+                    <li>Apple ID (processed by Apple)</li>
                 </ul>
-                <p><strong>Purpose of Processing:</strong></p>
+                <p><strong>Legal Basis:</strong><br>
+                    Art. 6 (1) lit. b GDPR (Performance of a contract)</p>
+                <p><strong>Further Information:</strong><br>
+                    <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>
+                </p>
+
+                <h3>4.4. Firebase App Check (Google LLC)</h3>
+                <p><strong>Purpose:</strong><br>
+                    We use Firebase App Check to verify that requests to our AI services originate from authentic
+                    instances of our app, helping to prevent abuse and unauthorized access.</p>
+                <p><strong>Processed Data:</strong></p>
                 <ul>
-                    <li>Troubleshooting and diagnosis of app crashes</li>
-                    <li>Analysis of app performance</li>
-                    <li>Optimization of user friendliness</li>
+                    <li>Device attestation tokens</li>
+                    <li>App instance information</li>
                 </ul>
                 <p><strong>Data Transfer to Third Countries:</strong><br>
                     Google is based in the USA. Data transfer is based on the EU Standard Contractual Clauses in
                     accordance with Art. 46 (2) lit. c GDPR.</p>
                 <p><strong>Legal Basis:</strong><br>
-                    Art. 6 (1) lit. f GDPR (Legitimate interest in the improvement and stability of the app)</p>
+                    Art. 6 (1) lit. f GDPR (Legitimate interest in preventing misuse and ensuring service integrity)</p>
                 <p><strong>Further Information:</strong><br>
                     <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy Policy</a>
                 </p>
-
-                <h3>4.4. Firebase Authentication & Cloud Firestore (Google LLC)</h3>
-                <p><strong>Purpose:</strong><br>
-                    We use <strong>Firebase Authentication</strong> to assign an anonymous user ID to your device. This
-                    allows us to securely manage your access without collecting personal data like names or email
-                    addresses.<br>
-                    We use <strong>Cloud Firestore</strong> (a cloud database) to store non-personal usage statistics
-                    (e.g., number of notes generated) linked to your device ID/anonymous ID to enforce usage limits for
-                    the free version of the app.</p>
-                <p><strong>Processed Data:</strong></p>
-                <ul>
-                    <li>Anonymous User IDs</li>
-                    <li>Device IDs (Android ID)</li>
-                    <li>Usage counters</li>
-                </ul>
-                <p><strong>Legal Basis:</strong><br>
-                    Art. 6 (1) lit. b GDPR (Performance of a contract) and Art. 6 (1) lit. f GDPR (Legitimate interest
-                    in preventing misuse and enforcing limits)</p>
             </section>
 
             <section>
                 <h2>5. Local Data Storage</h2>
                 <p>All notes, voice recordings, and settings created by you are stored primarily locally on your device
-                    in an encrypted database. We have no access to these locally stored data. You retain full control
-                    over your data and can delete it at any time by uninstalling the app or via the app settings.</p>
+                    using SwiftData (Apple's local database framework). We have no access to these locally stored data.
+                    You retain full control over your data and can delete it at any time by uninstalling the app or via
+                    the app settings.</p>
             </section>
 
             <section>
@@ -349,8 +356,8 @@
                         stored in accordance with Google guidelines.</li>
                     <li><strong>RevenueCat:</strong> Purchase data is stored for the duration of the subscription and
                         beyond in accordance with statutory retention periods.</li>
-                    <li><strong>Firebase:</strong> Crash logs and analytics data are stored in accordance with Firebase
-                        guidelines (usually 60-90 days).</li>
+                    <li><strong>Firebase App Check:</strong> Attestation data is stored in accordance with Firebase
+                        guidelines.</li>
                 </ul>
             </section>
 
@@ -390,11 +397,12 @@
                 <p>If you have any questions about the collection, processing, or use of your personal data, regarding
                     the assertion of your rights, or in case of complaints, please contact:</p>
                 <p>
-                    <strong>Christoph Andreas Fechter</strong><br>
+                    <strong>FechTech</strong><br>
+                    Christoph Andreas Fechter<br>
                     Geheimrat-Frank-Straße 1<br>
                     94566 Riedlhütte<br>
                     Germany<br>
-                    E-Mail: <a href="mailto:fechter73@googlemail.com">fechter73@googlemail.com</a>
+                    E-Mail: <a href="mailto:fechtech.dev@gmail.com">fechtech.dev@gmail.com</a>
                 </p>
             </section>
 
